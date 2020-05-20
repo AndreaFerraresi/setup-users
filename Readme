@@ -1,0 +1,17 @@
+# Create users 
+```
+$ htpasswd -c -B -b </path/to/users.htpasswd> <user_name> <password>
+```
+
+# Create openshift object 
+
+```
+$ oc create secret generic htpass-secret --from-file=htpasswd=</path/to/users.htpasswd> -n openshift-config
+
+```
+
+# Create Custom Resource 
+```
+oc apply -f httpasswd-cr.yaml
+```
+
